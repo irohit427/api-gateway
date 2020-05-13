@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.status(200).send({msg: 'Show all trips'});
-});
+const getTrips = require('../controllers/trip/getTrips');
+const getTrip = require('../controllers/trip/getTrip');
+const createTrip = require('../controllers/trip/createTrip');
+const updateTrip = require('../controllers/trip/updateTrip');
+const deleteTrip = require('../controllers/trip/deleteTrip');
 
-router.get('/:id', (req, res) => {
-    res.status(200).send({msg: `Display trip ${req.params.id}`})
-});
+router.route('/').get(getTrips).post(createTrip);
+
+router.route('/:id').get(getTrip).put(updateTrip).delete(deleteTrip);
 
 router.post('/', (req, res) => {
     res.status(200).send({msg: 'Create new trip'});

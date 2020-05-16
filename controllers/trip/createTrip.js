@@ -4,10 +4,14 @@
  *      @access         PRIVATE
  */
 
-const createTrip = (req, res, next) => {
-    res.status(200).send({
-        msg: 'Created Trip'
+const Trip = require('../../models/Trip');
+const asyncHandler = require('../../middleware/async');
+const createTrip = asyncHandler(async (req, res, next) => {
+    const trip = await Trip.create(req.body);
+    res.status(200).json({
+        success: true,
+        data: trip
     });
-};
+});
 
 module.exports = createTrip;

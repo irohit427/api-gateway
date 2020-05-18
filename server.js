@@ -7,6 +7,7 @@ const morgan = require('morgan');
 dotenv.config({path: '.\\config\\config.env'});
 const mongoConnect = require('./config/db');
 const trip = require('./routes/trip');
+const auth = require('./routes/auth');
 const errorHandler = require('./middleware/error');
 //const logger = require('./middleware/logger');
 
@@ -16,6 +17,7 @@ mongoConnect();
 app.use(morgan('combined'));
 app.use(express.json());
 app.use('/api/v1/trips', trip);
+app.use('/api/v1/auth', auth);
 app.use(errorHandler);
 
 app.get('/', (req, res) => {

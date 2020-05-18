@@ -1,11 +1,11 @@
-const asyncHandler = require('../../middleware/async');
-const User = require('../../models/User');
-
 /**
  *      @route              POST /api/v1/auth/register
  *      @description        register user
  *      @access             PUBLIC
  */
+const User = require('../../models/User');
+const asyncHandler = require('../../middleware/async');
+const ErrorHandler = require('../../utils/errorResponse');
 
 const register = asyncHandler(async (req, res, next) => {
     const { name, email, password, role } = req.body;

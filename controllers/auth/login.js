@@ -7,6 +7,8 @@
 const User = require('../../models/User');
 const asyncHandler = require('../../middleware/async');
 const ErrorResponse = require('../../utils/errorResponse');
+const cookieToken = require('../../utils/cookieToken');
+
 const login = asyncHandler(async (req, res, next) => {
     const {email, password} = req.body;
     if (!email || !password) {
@@ -25,9 +27,7 @@ const login = asyncHandler(async (req, res, next) => {
         return next(new ErrorResponse('Invalid credentials', 401));
     }
 
-    const token = user.getSignedJwtToken();
-
-    res.status(200).json({ success: true, token });
+    cookieToken(user, 200, res);
 });
 
 module.exports = login;

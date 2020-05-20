@@ -8,13 +8,14 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const rateLimit = require('express-rate-limit');
 const cors = require('cors');
+const path = require('path');
 const limiter = rateLimit({
     windowMs: 1 * 60 * 1000, // 1 minute
     max: 1000
 });
 
 // Load env
-dotenv.config({path: '.\\config\\config.env'});
+dotenv.config({path: path.resolve(__dirname, './config/config.env')});
 const mongoConnect = require('./config/db');
 const trip = require('./routes/trip');
 const auth = require('./routes/auth');

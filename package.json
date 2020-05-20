@@ -1,11 +1,11 @@
 {
   "name": "api_gateway",
   "version": "1.0.0",
-  "description": "Api Gateway demo",
+  "description": "Api Gateway",
   "main": "server.js",
   "scripts": {
     "start": "SET NODE_ENV=production & node server",
-    "dev": "nodemon server"
+    "dev": "nodemon --watch src src/server.js"
   },
   "author": "Rohit",
   "license": "MIT",

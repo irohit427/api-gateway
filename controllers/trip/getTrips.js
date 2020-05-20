@@ -3,9 +3,14 @@
  *      @description    get all the trips
  *      @access         PUBLIC
  */
-
-const getTrips = (req, res, next) => {
-   res.status(200).send({msg: 'Show all the trips'})
-}
+const asyncHandler = require('../../middleware/async');
+const Trip = require('../../models/Trip');
+const getTrips = asyncHandler(async(req, res, next) => {
+   const trips = await Trip.find();
+   res.status(200).json({
+      success: true,
+      data: trips
+   });
+});
 
 module.exports = getTrips;

@@ -9,7 +9,7 @@ const hpp = require('hpp');
 const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
+    windowMs: 1 * 60 * 1000, // 1 minute
     max: 1000
 });
 

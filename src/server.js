@@ -12,10 +12,10 @@ const path = require('path');
 const mongoConnect = require('./config/db');
 const errorHandler = require('./middleware/error');
 const app = express();
-const PORT = process.env.PORT;
 const trip = require('./routes/trip');
 const auth = require('./routes/auth');
 dotenv.config({path: path.resolve(__dirname, './config/config.env')});
+const PORT = process.env.PORT;
 
 mongoConnect();
 

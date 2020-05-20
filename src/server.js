@@ -1,10 +1,11 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
+const path = require('path');
 
 
 // Load env
-dotenv.config({path: '.\\config\\config.env'});
+dotenv.config({path: path.resolve(__dirname, './config/config.env')});
 const mongoConnect = require('./config/db');
 const trip = require('./routes/trip');
 const errorHandler = require('./middleware/error');
